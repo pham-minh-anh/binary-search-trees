@@ -42,12 +42,12 @@ class Tree {
   };
 
   includes(value) {
-    return Tree.#search(this.root, value);
+    return Tree.#search(this.root, value) ? true : false;
   }
 
   static #search(node, value) {
-    if (node === null) return false;
-    if (value === node.data) return true;
+    if (node === null) return null;
+    if (value === node.data) return node;
 
     return value < node.data
       ? Tree.#search(node.left, value)
@@ -172,6 +172,24 @@ class Tree {
     node.data = callback(node.data);
   }
 
+  height(value) {
+    let node = Tree.#search(this.root, value);
+    return Tree.#heightNode(node, 0);
+  }
+
+  static #heightNode(node, height) {
+    if (node === null) {
+      height--;
+      return height;
+    } else {
+      height++;
+      return Math.max(
+        this.#heightNode(node.left, height),
+        this.#heightNode(node.right, height),
+      );
+    }
+  }
+
   depth(value) {
     return Tree.#depthSearch(this.root, value);
   }
@@ -193,7 +211,34 @@ class Tree {
     return height;
   }
 
-  isBalanced() {}
+  isBalanced() {
+    return Tree.#nodeIsBalanced(this.root);
+  }
+
+  static #nodeIsBalanced(node) {
+    if (node === null) {
+      return true;
+    }
+    let heightLeft = Tree.#heightNode(node.left, 0);
+    let heightRight = Tree.#heightNode(node.right, 0);
+    let heightDiff = heightLeft - heightRight;
+    if (heightDiff > 1 || heightDiff < -1) {
+      return false;
+    }
+    return Tree.#nodeIsBalanced(node.left) && Tree.#nodeIsBalanced(node.right);
+  }
+
+  rebalance() {
+    let sortedArr = [];
+    let i = 0;
+    this.inOrderForEach((n) => {
+      sortedArr[i] = n;
+      i++;
+      return n;
+    });
+    let newTree = new Tree(sortedArr);
+    return newTree;
+  }
 }
 
 export { Tree };

@@ -14,6 +14,8 @@ test.deleteItem(49);
 test.deleteItem(34);
 test.deleteItem(50);
 test.deleteItem(101);
+test.insert(200);
+test.insert(300);
 
 console.log("Level order");
 test.levelOrderForEach((n) => {
@@ -37,8 +39,14 @@ test.postOrderForEach((n) => {
   return n;
 });
 
-let num = 13;
+let num = 22;
+console.log(`Height ${num}:`, test.height(num));
 console.log(`Depth ${num}:`, test.depth(num));
+console.log(`Tree includes ${num}:`, test.includes(num));
+console.log(`Tree is balanced?`, test.isBalanced());
 
 Tree.prettyPrint(test.root);
-console.log(test.includes(51));
+
+let newTree = test.rebalance();
+console.log(`New tree is balanced?`, newTree.isBalanced());
+Tree.prettyPrint(newTree.root);
