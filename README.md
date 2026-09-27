@@ -43,11 +43,13 @@ Claude wrote the visual interface: the tree drawing and controls in `dom.js`, an
 
 The scripts are ES modules, so the page has to be opened through a local web server. Opening it directly from `file://` won't work.
 
+You'll need [Node.js](https://nodejs.org/) installed. From the project folder, run:
+
 ```bash
-# from the project folder
-python3 -m http.server 8000
-# then open http://localhost:8000
+npx serve .
 ```
+
+Then open the address it prints (usually `http://localhost:3000`). Press `Ctrl+C` in the terminal to stop the server.
 
 In VS Code you can use the **Live Server** extension instead.
 
