@@ -2,6 +2,8 @@
 
 A balanced binary search tree (BST) in JavaScript, with a browser page that draws the tree and lets you try each of its functions.
 
+**Live demo:** https://pham-minh-anh.github.io/binary-search-trees/
+
 ## Authorship
 
 | File | Written by |
@@ -38,22 +40,6 @@ Claude wrote the visual interface: the tree drawing and controls in `dom.js`, an
 - Animates the level-order, in-order, pre-order and post-order traversals and lists the values in the order they're visited.
 - Checks whether the tree is balanced and can rebalance it.
 - Clicking a node puts its value in the input box.
-
-## Getting started
-
-The scripts are ES modules, so the page has to be opened through a local web server. Opening it directly from `file://` won't work.
-
-You'll need [Node.js](https://nodejs.org/) installed. From the project folder, run:
-
-```bash
-npx serve .
-```
-
-Then open the address it prints (usually `http://localhost:3000`). Press `Ctrl+C` in the terminal to stop the server.
-
-In VS Code you can use the **Live Server** extension instead.
-
-The console tests in `main.js` also run when the page loads. Open the browser's developer console to see their output.
 
 ## Project structure
 
